@@ -1,0 +1,28 @@
+{
+  "name": "excuse-engine",
+  "version": "1.0.0",
+  "description": "Mobile-first excuse generator with premium packs",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "excuse",
+    "generator",
+    "stripe",
+    "mobile"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@capacitor/app": "^7.0.2",
+    "@capacitor/splash-screen": "^7.0.2",
+    "@capacitor/status-bar": "^7.0.2",
+    "@types/node": "^22.13.11",
+    "express": "^4.18.2",
+    "stripe": "^14.13.0",
+    "uuid": "^11.1.0"
+  }
+}
