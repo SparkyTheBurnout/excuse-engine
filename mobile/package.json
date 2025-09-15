@@ -1,0 +1,24 @@
+{
+  "name": "excuse-engine-mobile",
+  "version": "1.0.0",
+  "description": "Excuse Engine mobile app",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx cap copy && npx cap sync",
+    "open:android": "npx cap open android",
+    "run:android": "npx cap run android",
+    "build:android": "npx cap build android",
+    "release:android": "cd android && ./gradlew assembleRelease"
+  },
+  "dependencies": {
+    "@capacitor/android": "^5.0.0",
+    "@capacitor/app": "^5.0.0",
+    "@capacitor/cli": "^5.0.0",
+    "@capacitor/core": "^5.0.0",
+    "@capacitor/splash-screen": "^5.0.0",
+    "@capacitor/status-bar": "^5.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.2"
+  }
+}
