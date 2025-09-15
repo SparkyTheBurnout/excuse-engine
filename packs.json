@@ -1,0 +1,48 @@
+
+{
+  "packs": [
+    {
+      "id": "work_sos",
+      "name": "Corporate Survival Pack",
+      "priceKey": "PRICE_WORK",
+      "price": "$5.00"
+    },
+    {
+      "id": "dating_disaster",
+      "name": "Dating Disaster Pack",
+      "priceKey": "PRICE_DATE",
+      "price": "$5.00"
+    },
+    {
+      "id": "parent_teacher",
+      "name": "Parent-Teacher Alibis",
+      "priceKey": "PRICE_PARENT",
+      "price": "$5.00"
+    },
+    {
+      "id": "gamer_emergency",
+      "name": "Gamer Queue Emergencies",
+      "priceKey": "PRICE_GAMER",
+      "price": "$5.00"
+    },
+    {
+      "id": "holiday_family",
+      "name": "Holiday Family Alibis",
+      "priceKey": "PRICE_HOLIDAY",
+      "price": "$5.00"
+    },
+    {
+      "id": "all_access",
+      "name": "Unlock All (everything)",
+      "priceKey": "PRICE_ALL",
+      "price": "$19.99"
+    },
+    {
+      "id": "subscription",
+      "name": "Pro Monthly Subscription",
+      "priceKey": "PRICE_SUB_MONTHLY",
+      "price": "$1.99/month",
+      "description": "Unlimited access to all packs + future releases"
+    }
+  ]
+}
