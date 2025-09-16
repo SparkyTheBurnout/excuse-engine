@@ -1,4 +1,4 @@
-name: Build Android AAB
+vname: Build Android AAB
 
 on:
   push:
@@ -42,18 +42,18 @@ jobs:
         cd mobile
         npx cap sync android
         
-    - name: Generate Debug Keystore
+       - name: Generate Debug Keystore
       run: |
-        cd mobile/android
-        keytool -genkey -v -keystore debug.keystore -storepass android -alias androiddebugkey -keypass android -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=Debug,O=Android,C=US"
-        
-    - name: Build Signed AAB (Android App Bundle)
+        cd mobile/android/app
+        keytool -genkey -v -keystore debug.keystore -storepass android -alias androiddebugkey -keypass android -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=Debug,O=Android,C=US"        
+   
+       - name: Build Signed AAB (Android App Bundle)
       run: |
         cd mobile/android
         chmod +x gradlew
-        ./gradlew bundleRelease -Pandroid.injected.signing.store.file=./debug.keystore -Pandroid.injected.signing.store.password=android -Pandroid.injected.signing.key.alias=androiddebugkey -Pandroid.injected.signing.key.password=android
-        
-    - name: Upload Signed AAB
+        ./gradlew bundleRelease -Pandroid.injected.signing.store.file=app/debug.keystore -Pandroid.injected.signing.store.password=android -Pandroid.injected.signing.key.alias=androiddebugkey -Pandroid.injected.signing.key.password=android        
+    
+     - name: Upload Signed AAB
       uses: actions/upload-artifact@v4
       with:
         name: app-release-aab-signed
