@@ -1,1 +1,146 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><title>Excuse Engine</title></head><body><p>Loading...</p></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Excuse Engine</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="appbar">
+    <div class="brand">
+      <img src="icon.png" alt="" class="logo" />
+      <div class="brand-text">
+        <div class="brand-title">Excuse Engine</div>
+        <div class="brand-sub">mobile</div>
+      </div>
+    </div>
+
+    <div class="appbar-actions">
+      <button id="btnPacks" class="chip">Packs</button>
+      <button id="btnUpgrade" class="chip primary">Unlock</button>
+    </div>
+  </header>
+
+  <main class="content" role="main">
+    <div class="status-row">
+      <div class="left">
+        <span id="planBadge" class="status-strong">free</span>
+        <span id="statusHint" class="status-dim">Generate excuses instantly.</span>
+      </div>
+      <button id="btnSurprise" class="chip">Surprise Me</button>
+    </div>
+
+    <section class="card">
+      <label class="field">
+        <span class="field-label">Category</span>
+        <select id="category" class="select">
+          <option value="work">work</option>
+          <option value="family">family</option>
+          <option value="medical">medical</option>
+          <option value="school">school</option>
+          <option value="travel">travel</option>
+          <option value="social">social</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span class="field-label">Tone</span>
+        <select id="tone" class="select">
+          <option value="apologetic">apologetic</option>
+          <option value="confident">confident</option>
+          <option value="humorous">humorous</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span class="field-label">Length</span>
+        <select id="len" class="select">
+          <option value="brief">brief</option>
+          <option value="1 sentence" selected>1 sentence</option>
+          <option value="2-3 sentences">2-3 sentences</option>
+          <option value="paragraph">paragraph</option>
+          <option value="detailed">detailed</option>
+        </select>
+      </label>
+
+      <div class="actions-row">
+        <button id="go" class="btn primary wide">Generate</button>
+      </div>
+
+      <div id="excuse" class="output" aria-live="polite">Your excuse will appear here…</div>
+      <div id="meta" class="meta"></div>
+
+      <div class="actions-row trio">
+        <button id="save" class="btn pill">Save</button>
+        <button id="copy" class="btn pill">Copy</button>
+        <button id="share" class="btn pill">Share</button>
+      </div>
+    </section>
+  </main>
+
+  <nav class="bottom-nav">
+    <button id="nav-saved" class="nav-btn">Saved</button>
+    <button id="nav-generate" class="fab">+</button>
+    <button id="nav-settings" class="nav-btn">Settings</button>
+  </nav>
+
+  <aside id="savedPanel" class="sheet" aria-hidden="true">
+    <header class="sheet-head">
+      <div class="sheet-title">Saved &amp; History</div>
+      <button id="savedClose" class="icon-btn">✕</button>
+    </header>
+    <div class="sheet-body">
+      <div id="favList" class="list"></div>
+      <hr />
+      <div id="historyList" class="list"></div>
+    </div>
+  </aside>
+
+  <aside id="settingsPanel" class="sheet" aria-hidden="true">
+    <header class="sheet-head">
+      <div class="sheet-title">Settings</div>
+      <button id="settingsClose" class="icon-btn">✕</button>
+    </header>
+    <div class="sheet-body">
+      <div class="row">
+        <label class="switch">
+          <input id="hapticsToggle" type="checkbox" />
+          <span>Haptics</span>
+        </label>
+      </div>
+      <div class="row">
+        <label>Default tone</label>
+        <select id="defaultTone" class="select">
+          <option value="apologetic">apologetic</option>
+          <option value="confident">confident</option>
+          <option value="humorous">humorous</option>
+        </select>
+      </div>
+      <div class="row">
+        <button id="btnRestore" class="btn ghost wide">Restore Purchases</button>
+      </div>
+    </div>
+  </aside>
+
+  <div id="packsModal" class="modal" aria-hidden="true">
+    <div class="modal-card">
+      <header class="modal-head">
+        <div class="modal-title">Packs</div>
+        <button id="packsClose" class="icon-btn">✕</button>
+      </header>
+      <div class="modal-body">
+        <div id="packsList" class="packs-list"></div>
+      </div>
+      <footer class="modal-foot">
+        <button id="packsOk" class="btn primary wide">Done</button>
+      </footer>
+    </div>
+  </div>
+
+  <div id="backdrop"></div>
+  <div id="toast" class="toast" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
