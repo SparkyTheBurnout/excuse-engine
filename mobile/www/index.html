@@ -1,1 +1,193 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><title>Excuse Engine</title></head><body><p>Loading...</p></body></html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Random Number Generator</title>
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+        background: #f6f7fb;
+        color: #1b1f2a;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+      }
+
+      .app {
+        width: 100%;
+        max-width: 420px;
+        background: #ffffff;
+        border-radius: 16px;
+        box-shadow: 0 18px 40px rgba(20, 27, 45, 0.12);
+        padding: 28px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 1.4rem;
+        font-weight: 700;
+      }
+
+      .inputs {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+
+      label {
+        font-size: 0.9rem;
+        font-weight: 600;
+        display: block;
+        margin-bottom: 6px;
+      }
+
+      input[type="number"] {
+        width: 100%;
+        padding: 12px 14px;
+        border: 1px solid #d7dbe8;
+        border-radius: 10px;
+        font-size: 1rem;
+      }
+
+      button {
+        width: 100%;
+        padding: 14px;
+        border: none;
+        border-radius: 12px;
+        background: #3c6df0;
+        color: #ffffff;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: transform 0.1s ease, box-shadow 0.1s ease;
+      }
+
+      button:active {
+        transform: scale(0.98);
+      }
+
+      .result {
+        font-size: 3rem;
+        font-weight: 700;
+        text-align: center;
+        padding: 12px;
+        background: #f1f4ff;
+        border-radius: 12px;
+        color: #1f3bb3;
+      }
+
+      .message {
+        min-height: 1.2em;
+        font-size: 0.9rem;
+        color: #d04444;
+        text-align: center;
+      }
+
+      @media (max-width: 480px) {
+        .app {
+          padding: 22px;
+        }
+
+        .result {
+          font-size: 2.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="app">
+      <h1>Random Number Generator</h1>
+
+      <section class="inputs">
+        <div>
+          <label for="min-value">Min</label>
+          <input id="min-value" type="number" inputmode="numeric" placeholder="1" />
+        </div>
+        <div>
+          <label for="max-value">Max</label>
+          <input id="max-value" type="number" inputmode="numeric" placeholder="100" />
+        </div>
+      </section>
+
+      <button type="button" id="generate-btn">Generate</button>
+
+      <div class="result" id="result">—</div>
+      <div class="message" id="message"></div>
+    </main>
+
+    <script>
+      const minInput = document.getElementById("min-value");
+      const maxInput = document.getElementById("max-value");
+      const resultEl = document.getElementById("result");
+      const messageEl = document.getElementById("message");
+      const generateBtn = document.getElementById("generate-btn");
+
+      const DEFAULT_MIN = 1;
+      const DEFAULT_MAX = 100;
+
+      function parseInputValue(input, fallbackValue) {
+        // Use default when the input is empty or whitespace.
+        if (!input.value.trim()) {
+          return fallbackValue;
+        }
+
+        const parsed = Number(input.value);
+        // Reject values that are not valid numbers.
+        if (!Number.isFinite(parsed)) {
+          return null;
+        }
+
+        return parsed;
+      }
+
+      function showMessage(text) {
+        messageEl.textContent = text;
+      }
+
+      function generateRandomNumber() {
+        const minValue = parseInputValue(minInput, DEFAULT_MIN);
+        const maxValue = parseInputValue(maxInput, DEFAULT_MAX);
+
+        if (minValue === null || maxValue === null) {
+          // Handle non-numeric input values.
+          showMessage("Please enter valid numbers for Min and Max.");
+          resultEl.textContent = "—";
+          return;
+        }
+
+        if (minValue > maxValue) {
+          // Handle the case where the min is larger than the max.
+          showMessage("Min cannot be greater than Max.");
+          resultEl.textContent = "—";
+          return;
+        }
+
+        showMessage("");
+
+        const min = Math.ceil(minValue);
+        const max = Math.floor(maxValue);
+
+        // Generate a random integer between the min and max (inclusive).
+        const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+        resultEl.textContent = randomNumber.toString();
+      }
+
+      generateBtn.addEventListener("click", generateRandomNumber);
+    </script>
+  </body>
+</html>
