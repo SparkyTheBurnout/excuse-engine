@@ -1,0 +1,18 @@
+{
+  "expo": {
+    "name": "Pick Us",
+    "slug": "pick-us",
+    "scheme": "pickus",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.pickus.app"
+    },
+    "plugins": ["expo-router"],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}
